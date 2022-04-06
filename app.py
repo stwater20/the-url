@@ -1,3 +1,4 @@
+from glob import glob
 import os
 from urllib.request import Request
 from flask import Flask, request, render_template, make_response
@@ -92,6 +93,15 @@ def get_url(url):
     return myresult
 
 
+def clean_url(url):
+    # $-_.+!*'(),
+    specialChars = "!#$%^&*(),"
+    txt = url
+    for specialChar in specialChars:
+        txt = txt.replace(specialChar, '')
+    return txt
+
+
 app = Flask(__name__)
 
 
@@ -118,12 +128,19 @@ def posturl():
 
 @app.route("/<url>")
 def newurl(url):
-    u = url.split("/")
-    response = get_url(u[len(u)-1])
-    if response:
-        count_url(u[len(u)-1])
-        return render_template("route.html", url=unquote(response[0]))
-    else:
+    try:
+        url = clean_url(url)
+        u = url.split("/")
+        if len(u) >= 4:
+            return render_template("index.html")
+        response = get_url(u[len(u)-1])
+        if response:
+            count_url(u[len(u)-1])
+            return render_template("route.html", url=unquote(response[0]))
+        else:
+            return render_template("index.html")
+    except Exception as e:
+        print(e)
         return render_template("index.html")
 
 
