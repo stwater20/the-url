@@ -8,9 +8,9 @@ import urllib.parse
 from urllib.parse import unquote
 
 mydb = mysql.connector.connect(
-    host="localhost",
-    user="root",
-    password="",
+    host="theurl-db.mysql.database.azure.com",
+    user="stwater20",
+    password="Tonton!@#$81903",
     database="theurl_system"
 )
 
@@ -63,6 +63,19 @@ def insert_url(url):
         mycursor.execute(sql)
         mydb.commit()
         return str(hash_url)
+
+
+def count_url(url):
+    mycursor = mydb.cursor()
+    print(url)
+    mycursor.execute(
+        "SELECT count FROM urls where `new_url`= \"" + url + "\"")
+    myresult = mycursor.fetchone()
+    count = int(myresult[0]) + 1
+    sql = "UPDATE `theurl_system`.`urls` SET `click_count` = " + \
+        "\""+str(count)+"\""+"WHERE `new_url` = " + "\"" + url + "\""
+    mycursor.execute(sql)
+    mydb.commit()
 
 
 def get_url(url):
