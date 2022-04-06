@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="nocopyright music">
+  <title>Theurl.tw 短網址產生器</title>
+  <!-- Bootstrap core CSS -->
+  <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet">
+  <link href="{{ url_for('static', filename='css/bootstrap.min.css.map') }}" rel="stylesheet">
+  <link href="{{ url_for('static', filename='css/main.css') }}" rel="stylesheet">
+  <link href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css" rel="stylesheet">
+</head>
+
+<body>
+
+  <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
+    <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="#">theurl.tw</a>
+    <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse"
+      data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    </div>
+  </header>
+
+  <div class="container-fluid" style="height:100vh;">
+    <div class="row" style="height:100vh;">
+      <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light collapse">
+        <div class="position-sticky pt-3">
+          <ul class="nav flex-column">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="/">
+                <span data-feather="home"></span>
+                Home
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/about">
+                <span data-feather="layers"></span>
+                About
+              </a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+      <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+        <div
+          class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+          <h1 class="h2">使用條款</h1>
+          <div class="btn-toolbar mb-2 mb-md-0">
+            <div class="btn-group me-2">
+              <button type="button" class="btn btn-sm btn-outline-secondary">Share</button>
+              <button type="button" class="btn btn-sm btn-outline-secondary">Like</button>
+
+            </div>
+            <!--
+          <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle">
+            <span data-feather="calendar"></span>
+            This week
+          </button>
+          -->
+          </div>
+        </div>
+        <div>
+        <p>歡迎使用 theurl.tw</p>
+        <p>theurl.tw 為「Sectools.tw」團隊所提供之短網址服務。只要您使用本服務，即代表您同意本條款，故請您仔細詳讀。</p>
+        <p>1.接受條款</p>
+        <p>當您使用本網站提供之所有服務，即表示已閱讀、瞭解並同意接受本服務條款之所有內容，並完全接受本服務現有與未來衍生的服務項目及內容。若您不瞭解或不認同，請勿使用本網站任何內容。</p>
+
+
+        <p>2.更改條款</p>
+        <p>theurl.tw 保有更改此服務條款之權利，請隨時注意，不會另行通知。於任何修改或變更後繼續使用本服務時，視為已閱讀、瞭解並同意接受該修改或變更。</p>
+
+        <p>3.帳號密碼之安全</p>
+        <p>theurl.tw 不會搜集任何除輸入網址、輸入時間以外的資訊。</p>
+        
+        <p>4.使用者義務</p>
+        <p>使用者必須承諾將不會透過 theurl.tw 做任何違背善良風俗或侵害他人權益之事，並承諾遵守中華民國相關法規及一切使用網際網路之國際慣例。若非中華民國之會員，仍應同意遵守所屬國家或地域之法令。不得透過其使用任何誹謗、侮辱、猥褻、不實等違反公共秩序及善良風俗或其他不法之文字、圖片或任何形式的檔案。
+          不得侵害 theurl.tw 或他人之名譽、隱私權、著作權、智慧財產權及其他權利，且不得散播電腦病毒。</p>
+
+        <p>5.使用者授權</p>
+        <p>對於使用者上傳之網址內容或其他提供之資料，同意 theurl.tw 於合理範圍內蒐集、保存，以作為統計或網路研究，或其他任何合法使用。若使用者無法授權，請勿上傳或提供給 theurl.tw 。
+
+        <p>6.終止使用</p>
+
+        <p>同意 theurl.tw 得基於安全考量，或違反本服務條款的明文規定及精神，終止本服務之使用。此外，使用者同意若本服務之使用被終止， theurl.tw 或任何第三人均不承擔責任。
+
+        <p>7.服務條款修訂</p>
+        <p>如果對於 theurl.tw 服務條款或相關事項有任何疑問，可以聯絡我們。</p>
+        <p>網站: <a href="https://sectools.tw">Sectools.tw</a></p>
+
+
+
+
+        </div>
+
+        <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+          <div class="col-md-4 d-flex align-items-center">
+            <a href="/" class="mb-3 me-2 mb-md-0 text-muted text-decoration-none lh-1">
+              <svg class="bi" width="30" height="24">
+                <use xlink:href="#bootstrap"></use>
+              </svg>
+            </a>
+            <span class="text-muted">© 2022 theurl.tw</span>
+          </div>
+
+          <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
+            <li class="ms-3"><a class="text-muted" href="#"><svg class="bi" width="24" height="24">
+                  <use xlink:href="#twitter"></use>
+                </svg></a></li>
+            <li class="ms-3"><a class="text-muted" href="#"><svg class="bi" width="24" height="24">
+                  <use xlink:href="#instagram"></use>
+                </svg></a></li>
+            <li class="ms-3"><a class="text-muted" href="#"><svg class="bi" width="24" height="24">
+                  <use xlink:href="#facebook"></use>
+                </svg></a></li>
+          </ul>
+        </footer>
+
+
+      </main>
+    </div>
+  </div>
+  <div>
+
+  </div>
+  <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+    crossorigin="anonymous"></script>
+  <script src="{{ url_for('static', filename='js/bootstrap.bundle.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+  <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+</body>
+
+</html>
