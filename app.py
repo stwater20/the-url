@@ -21,6 +21,7 @@ def check_url(url):
     mycursor.execute(
         "SELECT new_url FROM urls where `old_url`= \"" + url + "\"")
     myresult = mycursor.fetchone()
+    mycursor.close()
     return myresult
 
 
@@ -29,6 +30,7 @@ def check_hash(hash_value):
     mycursor.execute(
         "SELECT * FROM urls where `new_url`= \""+hash_value + "\"")
     myresult = mycursor.fetchone()
+    mycursor.close()
     return myresult
 
 
@@ -62,6 +64,7 @@ def insert_url(url):
         print(sql)
         mycursor.execute(sql)
         mydb.commit()
+        mycursor.close()
         return str(hash_url)
 
 
@@ -69,13 +72,14 @@ def count_url(url):
     mycursor = mydb.cursor()
     print(url)
     mycursor.execute(
-        "SELECT count FROM urls where `new_url`= \"" + url + "\"")
+        "SELECT click_count FROM urls where `new_url`= \"" + url + "\"")
     myresult = mycursor.fetchone()
     count = int(myresult[0]) + 1
     sql = "UPDATE `theurl_system`.`urls` SET `click_count` = " + \
         "\""+str(count)+"\""+"WHERE `new_url` = " + "\"" + url + "\""
     mycursor.execute(sql)
     mydb.commit()
+    mycursor.close()
 
 
 def get_url(url):
@@ -84,7 +88,8 @@ def get_url(url):
     mycursor.execute(
         "SELECT old_url FROM urls where `new_url`= \"" + url + "\"")
     myresult = mycursor.fetchone()
-    return myresult[0]
+    mycursor.close()
+    return myresult
 
 
 app = Flask(__name__)
@@ -116,11 +121,12 @@ def newurl(url):
     u = url.split("/")
     response = get_url(u[len(u)-1])
     if response:
-        return render_template("route.html", url=unquote(response))
+        count_url(u[len(u)-1])
+        return render_template("route.html", url=unquote(response[0]))
     else:
         return render_template("index.html")
 
 
 if __name__ == "__main__":
-    port = int(os.environ.get('PORT', 5000))
+    port = int(os.environ.get('PORT', 80))
     app.run(host='0.0.0.0', port=port, debug=True)
