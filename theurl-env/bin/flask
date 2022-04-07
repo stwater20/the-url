@@ -1,4 +1,4 @@
-#!/Users/ryan.chen/Library/CloudStorage/OneDrive-ntut.org.tw/個人資料/工作/自己的專案/flask-short-url/theurl-env/bin/python3.9
+#!/Users/ryan.chen/Library/CloudStorage/OneDrive-ntut.org.tw/個人資料/工作/自己的專案/flask-short-url/theurl-env/bin/python3
 # -*- coding: utf-8 -*-
 import re
 import sys
