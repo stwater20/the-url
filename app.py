@@ -133,7 +133,10 @@ def posturl():
             response.mimetype = "text/plain"
             return response
         rh = insert_url(url)
-        rh = str(request.url_root)+rh
+        if "127.0.0.1" in str(request.url_root) or "localhost" in str(request.url_root):
+            rh = str(request.url_root)+rh
+        else:
+            rh = "https://theurl.tw/"+rh
         response = make_response(str(rh), 200)
         response.mimetype = "text/plain"
         return response
