@@ -7,6 +7,7 @@ import hashlib
 import mysql.connector
 import urllib.parse
 from urllib.parse import unquote
+import urllib
 
 mydb = mysql.connector.connect(
     host="theurl-db.mysql.database.azure.com",
@@ -93,6 +94,14 @@ def get_url(url):
     return myresult
 
 
+def IsConnectionFailed(url):
+    try:
+        urllib.request.urlopen(url)
+    except Exception as e:
+        return False
+    return True
+
+
 def clean_url(url):
     # $-_.+!*'(),
     specialChars = "!#$%^&*(),"
@@ -119,6 +128,10 @@ def about():
 def posturl():
     if request.method == "POST":
         url = request.form["theurl"]
+        if not IsConnectionFailed(url):
+            response = make_response("原始網址不存在", 200)
+            response.mimetype = "text/plain"
+            return response
         rh = insert_url(url)
         rh = str(request.url_root)+rh
         response = make_response(str(rh), 200)
@@ -129,6 +142,8 @@ def posturl():
 @app.route("/<url>")
 def newurl(url):
     try:
+        if not IsConnectionFailed:
+            return render_template("index.html")
         url = clean_url(url)
         u = url.split("/")
         if len(u) >= 4:

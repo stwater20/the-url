@@ -90,6 +90,9 @@
           </div>
         </div>
         <div>
+          <p>我們承諾不保存網址與時間以外紀錄!</p>
+        </div>
+        <div>
           <div class="input-group">
             <input type="text" class="form-control" name="theurl" id="theurl" placeholder="https://">
             <button id="btn_submit" class="btn btn-secondary">縮短網址</button>
@@ -103,10 +106,12 @@
               <tr>
                 <td>原網址</td>
                 <td id="url-old" align="left"></td>
+                <td><button type="button" class="btn btn-secondary" onclick="copyEvent('url-old')">複製</button></td>
               </tr>
               <tr>
                 <td>短網址</td>
                 <td id="url-new" align="left"></td>
+                <td><button type="button" class="btn btn-secondary" onclick="copyEvent('url-new')">複製</button></td>
               </tr>
             </tbody>
           </table>
@@ -118,7 +123,8 @@
                 <use xlink:href="#bootstrap"></use>
               </svg>
             </a>
-            <span class="text-muted">© 2022 theurl.tw</span>
+            <span class="text-muted">© 2022 theurl.tw | Developer <a href="https://sectools.tw/author-ryan">Shan S.
+                Chen</a></span>
           </div>
 
           <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
@@ -159,6 +165,13 @@
         $("#table-home").css("display", "block");
       });
     });
+
+    function copyEvent(id) {
+      var str = document.getElementById(id);
+      window.getSelection().selectAllChildren(str);
+      document.execCommand("Copy")
+      alert("複製成功!")
+    }
   </script>
 </body>
 
