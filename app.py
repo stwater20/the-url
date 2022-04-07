@@ -1,6 +1,3 @@
-from glob import glob
-import os
-from urllib.request import Request
 from flask import Flask, request, render_template, make_response
 import datetime
 import hashlib
