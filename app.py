@@ -92,16 +92,16 @@ def get_url(url):
 
 
 def IsConnectionFailed(url):
-    try:
-        urllib.request.urlopen(url)
-    except Exception as e:
-        return False
+    # try:
+    #     urllib.request.urlopen(url)
+    # except Exception as e:
+    #     return False
     return True
 
 
 def clean_url(url):
     # $-_.+!*'(),
-    specialChars = "!#$%^&*(),"
+    specialChars = "!^*(),"
     txt = url
     for specialChar in specialChars:
         txt = txt.replace(specialChar, '')
