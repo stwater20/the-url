@@ -4,7 +4,7 @@ import hashlib
 import mysql.connector
 import urllib.parse
 from urllib.parse import unquote
-# import urllib
+
 
 mydb = mysql.connector.connect(
     host="theurl-db.mysql.database.azure.com",
