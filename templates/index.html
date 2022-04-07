@@ -32,6 +32,18 @@
 
   <link href="{{ url_for('static', filename='css/main.css') }}" rel="stylesheet">
   <link href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css" rel="stylesheet">
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-3YKMCHBDV2"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+
+    gtag('config', 'G-3YKMCHBDV2');
+  </script>
 </head>
 
 <body>
@@ -77,8 +89,13 @@
           <h1 class="h2">The Url 短網址產生器</h1>
           <div class="btn-toolbar mb-2 mb-md-0">
             <div class="btn-group me-2">
-              <button type="button" class="btn btn-sm btn-outline-secondary">Share</button>
-              <button type="button" class="btn btn-sm btn-outline-secondary">Like</button>
+              <iframe
+                src="https://www.facebook.com/plugins/share_button.php?href=https%3A%2F%2Ftheurl.tw&layout=button_count&size=small&appId=1119802762203964&width=71&height=20"
+                width="71" height="20" style="border:none;overflow:hidden" scrolling="no" frameborder="0"
+                allowfullscreen="true"
+                allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+              <!-- <button type="button" class="btn btn-sm btn-outline-secondary">Share</button>
+            <button type="button" class="btn btn-sm btn-outline-secondary">Like</button> -->
 
             </div>
             <!--
