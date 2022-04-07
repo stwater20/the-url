@@ -92,10 +92,10 @@ def get_url(url):
 
 
 def IsConnectionFailed(url):
-    # try:
-    #     urllib.request.urlopen(url)
-    # except Exception as e:
-    #     return False
+    try:
+        urllib.request.urlopen(url)
+    except Exception as e:
+        return False
     return True
 
 
