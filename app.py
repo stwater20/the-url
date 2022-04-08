@@ -63,7 +63,6 @@ def insert_url(url):
         print(sql)
         mycursor.execute(sql)
         mydb.commit()
-        mycursor.close()
         return str(hash_url)
 
 
@@ -73,12 +72,12 @@ def count_url(url):
     mycursor.execute(
         "SELECT click_count FROM urls where `new_url`= \"" + url + "\"")
     myresult = mycursor.fetchone()
+    mycursor.close()
     count = int(myresult[0]) + 1
+    mycursor = mydb.cursor()
     sql = "UPDATE `theurl_system`.`urls` SET `click_count` = " + \
         "\""+str(count)+"\""+"WHERE `new_url` = " + "\"" + url + "\""
     mycursor.execute(sql)
-    mydb.commit()
-    mycursor.close()
 
 
 def get_url(url):
@@ -92,11 +91,10 @@ def get_url(url):
 
 
 def IsConnectionFailed(url):
-    # try:
-    #     urllib.request.urlopen(url)
-    # except Exception as e:
-    #     return False
-    return True
+    if "http" in url or "https" in url:
+        return True
+    else:
+        return False
 
 
 def clean_url(url):
