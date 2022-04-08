@@ -1,4 +1,4 @@
-from flask import Flask, request, render_template, make_response
+from flask import Flask, request, render_template, make_response, send_from_directory
 import datetime
 import hashlib
 import mysql.connector
@@ -157,6 +157,11 @@ def newurl(url):
     except Exception as e:
         print(e)
         return render_template("index.html")
+
+
+@app.route('/sitemap.xml')
+def static_from_root():
+    return send_from_directory(app.static_folder, request.path[1:])
 
 
 if __name__ == "__main__":
