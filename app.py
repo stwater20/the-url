@@ -162,9 +162,6 @@ def static_from_root():
     return send_from_directory(app.static_folder, request.path[1:])
 
 
-analysis = client.scan_url('https://somedomain.com/foo/bar')
-
-
 if __name__ == "__main__":
     # port = int(os.environ.get('PORT', 80))
     # app.run(host='0.0.0.0', port=port, debug=True)
