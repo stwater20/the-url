@@ -4,6 +4,9 @@ import hashlib
 import mysql.connector
 import urllib.parse
 from urllib.parse import unquote
+import vt
+client = vt.Client(
+    "62060697eabbc73532ff27b9f96625153f9b230d5f1a1f2fb4d2c241826ac423")
 
 
 mydb = mysql.connector.connect(
@@ -160,6 +163,9 @@ def newurl(url):
 @app.route('/sitemap.xml')
 def static_from_root():
     return send_from_directory(app.static_folder, request.path[1:])
+
+
+analysis = client.scan_url('https://somedomain.com/foo/bar')
 
 
 if __name__ == "__main__":
