@@ -5,16 +5,26 @@ import mysql.connector
 import urllib.parse
 from urllib.parse import unquote
 
+app = Flask(__name__)
 
 mydb = mysql.connector.connect(
     host="theurl-db.mysql.database.azure.com",
     user="stwater20",
     password="Tonton!@#$81903",
-    database="theurl_system"
+    database="theurl_system",
+    pool_name='batman',
+    pool_size=3
 )
 
 
+def connection():
+    """Get a connection and a cursor from the pool"""
+    db = mysql.connector.connect(pool_name='batman')
+    return db
+
+
 def check_url(url):
+    mydb = connection()
     mycursor = mydb.cursor()
     print(url)
     mycursor.execute(
@@ -25,6 +35,7 @@ def check_url(url):
 
 
 def check_hash(hash_value):
+    mydb = connection()
     mycursor = mydb.cursor()
     mycursor.execute(
         "SELECT * FROM urls where `new_url`= \""+hash_value + "\"")
@@ -52,6 +63,7 @@ def insert_url(url):
         return response[0]
     else:
         hash_url = create_hash(url)
+        mydb = connection()
         mycursor = mydb.cursor()
         print(hash_url)
         sql = "INSERT INTO `theurl_system`.`urls`(`old_url`,`new_url`,`timestamp`,`click_count`) VALUES (" \
@@ -67,6 +79,7 @@ def insert_url(url):
 
 
 def count_url(url):
+    mydb = connection()
     mycursor = mydb.cursor()
     print(url)
     mycursor.execute(
@@ -81,6 +94,7 @@ def count_url(url):
 
 
 def get_url(url):
+    mydb = connection()
     mycursor = mydb.cursor()
     print(url)
     mycursor.execute(
@@ -104,9 +118,6 @@ def clean_url(url):
     for specialChar in specialChars:
         txt = txt.replace(specialChar, '')
     return txt
-
-
-app = Flask(__name__)
 
 
 @app.route("/")
