@@ -7,6 +7,7 @@ from urllib.parse import unquote
 
 app = Flask(__name__)
 
+
 mydb = mysql.connector.connect(
     host="theurl-db.mysql.database.azure.com",
     user="stwater20",
@@ -24,7 +25,6 @@ def connection():
 
 
 def check_url(url):
-    mydb = connection()
     mycursor = mydb.cursor()
     print(url)
     mycursor.execute(
@@ -35,7 +35,6 @@ def check_url(url):
 
 
 def check_hash(hash_value):
-    mydb = connection()
     mycursor = mydb.cursor()
     mycursor.execute(
         "SELECT * FROM urls where `new_url`= \""+hash_value + "\"")
@@ -79,7 +78,6 @@ def insert_url(url):
 
 
 def count_url(url):
-    mydb = connection()
     mycursor = mydb.cursor()
     print(url)
     mycursor.execute(
@@ -94,7 +92,6 @@ def count_url(url):
 
 
 def get_url(url):
-    mydb = connection()
     mycursor = mydb.cursor()
     print(url)
     mycursor.execute(
@@ -132,6 +129,19 @@ def about():
 
 @app.route("/url-create", methods=["POST"])
 def posturl():
+    global mydb
+    try:
+        mydb.cursor()
+    except mysql.connector.Error as err:
+        mydb = mysql.connector.connect(
+            host="theurl-db.mysql.database.azure.com",
+            user="stwater20",
+            password="Tonton!@#$81903",
+            database="theurl_system",
+            pool_name='batman',
+            pool_size=3
+        )
+
     if request.method == "POST":
         url = request.form["theurl"]
         if not IsConnectionFailed(url):
