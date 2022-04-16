@@ -16,12 +16,6 @@ mydb = mysql.connector.connect(
 )
 
 
-def connection():
-    """Get a connection and a cursor from the pool"""
-    db = mysql.connector.connect(pool_name='batman')
-    return db
-
-
 def check_url(url):
     mycursor = mydb.cursor()
     print(url)
@@ -60,7 +54,6 @@ def insert_url(url):
         return response[0]
     else:
         hash_url = create_hash(url)
-        mydb = connection()
         mycursor = mydb.cursor()
         print(hash_url)
         sql = "INSERT INTO `theurl_system`.`urls`(`old_url`,`new_url`,`timestamp`,`click_count`) VALUES (" \
