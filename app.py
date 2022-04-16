@@ -12,9 +12,7 @@ mydb = mysql.connector.connect(
     host="theurl-db.mysql.database.azure.com",
     user="stwater20",
     password="Tonton!@#$81903",
-    database="theurl_system",
-    pool_name='batman',
-    pool_size=3
+    database="theurl_system"
 )
 
 
@@ -137,9 +135,7 @@ def posturl():
             host="theurl-db.mysql.database.azure.com",
             user="stwater20",
             password="Tonton!@#$81903",
-            database="theurl_system",
-            pool_name='batman',
-            pool_size=3
+            database="theurl_system"
         )
 
     if request.method == "POST":
