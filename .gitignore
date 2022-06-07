@@ -1,5 +1,0 @@
-theurl-env/*
-.DS_Store
-.gitignore
-.github/workflows/*
-__pycache__/*
