@@ -1,4 +1,5 @@
 theurl-env/*
 .DS_Store
 .gitignore
-.github/*
+.github/workflows/*
+__pycache__/*
